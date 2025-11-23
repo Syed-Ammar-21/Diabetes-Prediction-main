@@ -1,7 +1,7 @@
 st_style = """
            <style>
            #MainMenu {visibility: hidden;}
-           footer {visibility: hidden;}
+           footer {visibility: visible;}
            header {visibility: hidden;}
            div.block-container {padding-top:1rem;}
            .css-ysnqb2 e1g8pov64 {margin-top: -75px;}
@@ -15,7 +15,7 @@ footer = """
         left: 0;
         bottom: 0;
         width: 100%;
-        background-color: rgba(0, 0, 255, 0.1);  /* Very transparent blue */
+        background-color: rgba(0, 0, 90, 0.1); /* Navy tone */
         text-align: center;
         padding: 10px;
         font-size: 14px;
@@ -30,19 +30,24 @@ footer = """
     }
     </style>
     <div class="footer">
-        <p>Asan Zindagi | © 2025 UznetDev <a href="https://github.com/UznetDev/Diabetes-Prediction.git" target="_blank">GitHub</a></p>
+        <p>Asan Zindagi | AmirAbbasi4923 <a href="https://github.com/AmirAbbasi4923/Azan_Zindagi_Diabetes_Prediction_App" target="_blank">GitHub</a></p>
     </div>
     """
 
 
-head = """
+head_template = """
     <div style="text-align: 
     center; 
     font-size: 40px; 
     font-weight: bold; 
     color: #2E86C1;
-    margin-bottom: 20px;">
-        🌟Azan Zindagi Diabetes Prediction App 🌟
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;">
+        <img src="data:image/png;base64,{logo_base64}" style="height: 80px; width: auto; vertical-align: middle; background: transparent; mix-blend-mode: normal;" />Azan Zindagi Diabetes Prediction App
     </div>
     <div style="text-align: center; font-size: 18px; color: #5D6D7E; margin-bottom: 60px;">
         Harness the power of machine learning to predict diabetes and provide insights!

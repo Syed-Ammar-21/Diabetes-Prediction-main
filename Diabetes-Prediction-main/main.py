@@ -4,7 +4,7 @@ from loader import page_icon
 
 
 st.set_page_config(
-    page_title="Diabetes Prediction with AI",
+    page_title="Asan Zindagi Diabetes Prediction ",
     page_icon=page_icon,
     layout="wide",
     initial_sidebar_state="expanded"

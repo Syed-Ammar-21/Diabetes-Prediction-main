@@ -6,11 +6,7 @@
 
 This project demonstrates a machine learning solution for predicting diabetes based on user-provided health data. The application uses **Streamlit** for an interactive web interface and advanced interpretability tools like SHAP and permutation importance to explain model predictions.
 
-## Live Demo
 
-Check out the live application: [Diabetes Prediction App](https://diabetes-prediction-uz.streamlit.app/)
-
----
 
 ## Table of Contents
 1. [Overview](#overview)
@@ -263,3 +259,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 
 ### <i>Thank you for your interest in the project!</i>
+#python -m streamlit run main.py
