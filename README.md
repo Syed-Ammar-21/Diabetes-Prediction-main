@@ -10,7 +10,7 @@ This project demonstrates a machine learning solution for predicting diabetes ba
 
 > **⚠️ Disclaimer:** This project is for educational purposes only and is not a medical diagnostic tool.
 
-![Home](Home.jpg)
+![Home](Home.png)
 
 ---
 
@@ -129,7 +129,7 @@ You can learn more about the model in detail from [here](notebooks/Model.ipynb).
 
 ## Project Structure
 
-![Project Structure](folder-structure.jpg)
+![Project Structure](folder-structure.png)
 
 ---
 
