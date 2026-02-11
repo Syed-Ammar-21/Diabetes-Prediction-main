@@ -10,7 +10,7 @@ This project demonstrates a machine learning solution for predicting diabetes ba
 
 > **⚠️ Disclaimer:** This project is for educational purposes only and is not a medical diagnostic tool.
 
-![Home](./Home.jpg)
+![Home](Home.jpg)
 
 ---
 
@@ -122,14 +122,14 @@ You can learn more about the model in detail from [here](notebooks/Model.ipynb).
    ```bash
    python -m venv venv (on windows terminal )
    .\venv\Scripts\activate
-python -m streamlit run main.py
+   python -m streamlit run main.py
   
 
 ---
 
 ## Project Structure
 
-![Project Structure](./folder-structure.jpg)
+![Project Structure](folder-structure.jpg)
 
 ---
 
