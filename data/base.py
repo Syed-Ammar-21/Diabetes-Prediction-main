@@ -1,12 +1,42 @@
 st_style = """
            <style>
-           #MainMenu {visibility: hidden;}
-           footer {visibility: visible;}
-           header {visibility: hidden;}
-           div.block-container {padding-top:1rem;}
-           .css-ysnqb2 e1g8pov64 {margin-top: -75px;}
+           @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+           
+           /* Global font */
+           html, body, [class*="css"] {
+               font-family: 'DM Sans', system-ui, -apple-system, sans-serif !important;
+           }
+           div.block-container { padding-top: 2rem; padding-bottom: 2rem; }
+           #MainMenu { visibility: hidden; }
+           footer { visibility: hidden; }
+           header { visibility: visible; }
+           /* Sidebar background matches home */
+           section[data-testid="stSidebar"] {
+               background-color: transparent !important;
+               border-right: none !important;
+           }
+           section[data-testid="stSidebar"] > div { padding-top: 0.5rem !important; }
            </style>
            """
+
+# Sidebar brand (above input parameters): DiabAI
+sidebar_credits = """
+<div style="
+    padding: 0.25rem 0.5rem 0.75rem;
+    margin-bottom: 0.75rem;
+    margin-top: 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(46, 134, 193, 0.25);
+">
+    <span style="
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #29b5e8;
+        font-family: 'DM Sans', system-ui, sans-serif;
+    ">DiabAI</span>
+</div>
+"""
 
 footer = """
     <style>
@@ -35,22 +65,29 @@ footer = """
     """
 
 
-head_template = """
-    <div style="text-align: 
-    center; 
-    font-size: 40px; 
-    font-weight: bold; 
-    color: #2E86C1;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;">
-        <img src="data:image/png;base64,{logo_base64}" style="height: 70px; width: auto; vertical-align: middle; background: transparent; mix-blend-mode: normal;" />Asan Zindagi Diabetes Prediction App
-    </div>
-    <div style="text-align: center; font-size: 18px; color: #5D6D7E; margin-bottom: 60px;">
-        Harness the power of machine learning to predict diabetes and provide insights!
+# Top header: empty (tagline removed to avoid cutoff)
+head_template = ""
+
+# Footer section: logo centered above credits (used at bottom of page)
+footer_with_logo_template = """
+    <div style="
+        margin-top: 4rem;
+        padding: 2.5rem 1.5rem;
+        text-align: center;
+        background: linear-gradient(180deg, rgba(46, 134, 193, 0.06) 0%%, transparent 100%);
+        border-top: 1px solid rgba(46, 134, 193, 0.15);
+        border-radius: 12px 12px 0 0;
+    ">
+        <div style="margin-bottom: 1.25rem;">
+            <img src="data:image/png;base64,{logo_base64}" style="height: 56px; width: auto; display: inline-block; vertical-align: middle; background: transparent; mix-blend-mode: normal;" alt="Logo" />
+        </div>
+        <div style="font-size: 0.9rem; color: #5D6D7E; font-family: 'DM Sans', system-ui, sans-serif;">
+            <strong style="color: #2E86C1;">Asaan Zindagi</strong>
+            <span style="margin: 0 0.35rem;">|</span>
+            <a href="https://github.com/AmirAbbasi4923" target="_blank" style="color: #2E86C1; text-decoration: none;">Amir Abbasi</a>
+            <span style="margin: 0 0.35rem;">|</span>
+            <a href="https://github.com/Syed-Ammar-21" target="_blank" style="color: #2E86C1; text-decoration: none;">Syed Ammar</a>
+        </div>
     </div>
     """
 
@@ -61,7 +98,9 @@ margin-bottom: 50px;
 padding: 10px;
 max-width: 300px;
 text-align: center;
-border-radius: 5px; text-align: center;">
+border-radius: 5px;
+font-family: 'DM Sans', system-ui, sans-serif;
+font-weight: 500;">
     {}
 </div>
 """

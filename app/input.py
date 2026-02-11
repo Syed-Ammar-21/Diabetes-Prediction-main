@@ -1,8 +1,10 @@
 import streamlit as st
 import pandas as pd
+from data.base import sidebar_credits
 
 
 def app():
+    st.sidebar.markdown(sidebar_credits, unsafe_allow_html=True)
     st.sidebar.header("Input Parameters")
 
     # Pregnancies

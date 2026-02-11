@@ -1,3 +1,6 @@
+import base64
+import os
+import io
 import pandas as pd
 import joblib
 from PIL import Image
@@ -11,7 +14,9 @@ from sklearn.metrics import (accuracy_score,
                              f1_score,
                              roc_auc_score)
 
-data = pd.read_csv('datasets/diabetes.csv')
+base_path = os.path.dirname(os.path.abspath(__file__))
+csv_path = os.path.join(base_path, 'datasets', 'diabetes.csv')
+data = pd.read_csv(csv_path)
 X = data[['Pregnancies', 'Glucose', 'Insulin', 'BMI', 'Age']]
 y = data['Outcome']
 
@@ -34,6 +39,11 @@ for item in data:
 page_icon_raw.putdata(new_data)
 page_icon = page_icon_raw
 
+# Base64 logo for footer (same image as page_icon)
+_buffer = io.BytesIO()
+page_icon.save(_buffer, format='PNG')
+logo_base64 = base64.b64encode(_buffer.getvalue()).decode()
+
 model = joblib.load('model.pkl')
 
 
@@ -43,11 +53,11 @@ y_pred = (y_score >= thresholds).astype(int)
 
 # Accuracy Score
 accuracy_result = round(accuracy_score(y, y_pred) * 100, 2)
-# F! Score
-f1_result = (f1_score(y, y_pred) * 100).round(2)
+# F1 Score
+f1_result = round(f1_score(y, y_pred) * 100, 2)
 # Recall Score
-recall_result = (recall_score(y, y_pred) * 100).round(2)
+recall_result = round(recall_score(y, y_pred) * 100, 2)
 # Precision Score
-precision_result = (precision_score(y, y_pred) * 100).round(2)
+precision_result = round(precision_score(y, y_pred) * 100, 2)
 # ROC AUC Score
-roc_auc = (roc_auc_score(y, y_score)*100).round(2)
+roc_auc = round(roc_auc_score(y, y_score) * 100, 2)

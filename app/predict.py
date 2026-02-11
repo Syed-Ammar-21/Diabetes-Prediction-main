@@ -9,6 +9,7 @@ from data.base import mrk
 def app(input_data):
     prediction = model.predict_proba(input_data)[:, 1][0]
 
+    st.markdown("<div style='margin-top: 0.5rem; margin-bottom: 0.5rem;'></div>", unsafe_allow_html=True)
     cols = st.columns(2)
 
     def stream_data():

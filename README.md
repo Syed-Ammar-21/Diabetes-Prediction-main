@@ -1,41 +1,30 @@
-# Diabetes Prediction with AI
+🧠 DiabAI: Smart Diabetes Detection Using Deep Learning
+
+[![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Streamlit](https://img.shields.io/badge/Streamlit-App-FF4B4B.svg)](https://streamlit.io)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
-![app.gif](image/app.gif)
+This project demonstrates a machine learning solution for predicting diabetes based on user-provided health data. The application uses **Streamlit** for an interactive web interface and advanced interpretability tools like **SHAP** and **Permutation Importance** to explain model predictions.
 
 
-This project demonstrates a machine learning solution for predicting diabetes based on user-provided health data. The application uses **Streamlit** for an interactive web interface and advanced interpretability tools like SHAP and permutation importance to explain model predictions.
+> **⚠️ Disclaimer:** This project is for educational purposes only and is not a medical diagnostic tool.
 
-
-
-## Table of Contents
-1. [Overview](#overview)
-2. [Dataset](#dataset)
-3. [Model](#model)
-4. [Features](#features)
-5. [Installation](#installation)
-6. [How It Works](#how-it-works)
-7. [Project Structure](#project-structure)
-8. [Explanation Methods](#explanation-methods)
-9. [Model Performance](#model-performance)
-10. [Project Motivation](#project-motivation)
-11. [Contributing](#contributing)
-12. [License](#license)
-13. [Contacts](#contacts)
+![Home](./Home.jpg)
 
 ---
 
+
+
+
 ## Overview
+This application allows users to enter health data and receive:
+- **Diabetes Risk Prediction**: Real-time analysis of input data.
+- **Probability Score**: Quantitative likelihood of diabetes.
+- **XAI (Explainable AI)**: Detailed visualization of feature contributions using SHAP.
 
-The **Diabetes Prediction with AI** project leverages a machine learning model to predict diabetes risk. Built with **Streamlit**, the app explains predictions using SHAP and permutation importance while showcasing model performance metrics. This model has not been reviewed by medical professionals; it is developed solely for experimental and testing purposes.
-The model was developed based on the ROC AUC metric, while efforts were made to improve the Recall metric when selecting the threshold, as this decision was made due to the medical context.
+The model was developed based on the ROC AUC metric, while efforts were made to improve the **Recall** metric when selecting the threshold, as this decision was made due to the medical context and for experimental/testing purposes.
 
-### Why This Project?
-
-Understanding diabetes risk through data-driven predictions can help identify potential cases early. This project also demonstrates:
-- Practical application of machine learning.
-- Model interpretability through SHAP and permutation importance.
-- Real-world deployment of machine learning models.
 
 ---
 
@@ -81,36 +70,18 @@ The dataset contains the following details:
 
 
 #### We use only `Pregnancies`, `Glucose`, `BMI`, `Insulin`, `Age` for prediction.
+
+
 ---
+
 
 ## Model
 You can learn more about the model in detail from [here](notebooks/Model.ipynb). The `RandomForestClassifier` model was chosen through experimentation and showed the best performance. The required hyperparameters were identified using the `optuna` optimizer. For the model to function, it needs `FeatureEngineering`, `WoEEncoding`, and `ColumnSelector` transformers, which are combined through a pipeline.
 `Cross-validation` and `ROC AUC` were used for model selection because the number of observations was small, and splitting into test/train sets would have been inaccurate.
 
-### About tarnsformers
-#### **1. FeatureEngineering**
-Transforms raw data into a format suitable for machine learning. This includes scaling, encoding, creating new features, or handling missing data.
-
-
-#### **2. WoEEncoding (Weight of Evidence Encoding)**
-Features must help to better explain the `Outcome` after WoE.
-The Weight of Evidence (WoE) for a category in a feature is calculated as:
-
-Where:
-- `P(Feature = X | Target = 1)`: Proportion of positive cases (`Target = 1`) for the category `X`.
-- `P(Feature = X | Target = 0)`: Proportion of negative cases (`Target = 0`) for the category `X`.
-
-##### Example:
-If a feature `X` has the following counts:
-- For `Target = 1` (Positive): `N1`
-- For `Target = 0` (Negative): `N0`
-
-#### **3. ColumnSelector**
-Selects specific columns *Pregnancies*, *Glucose*, *BMI*, *PregnancyRatio*,
-    *RiskScore*, *InsulinEfficiency*, *Glucose_BMI*, *BMI_Age*,
-    *Glucose_woe*, *RiskScore_woe* after `FeatureEngineering`, it helps remove noice columns.
 
 ---
+
 ## Features
 
 1. **Interactive Input**: Enter health parameters (Pregnancies, Glucose, Insulin, BMI, Age).
@@ -138,8 +109,8 @@ Selects specific columns *Pregnancies*, *Glucose*, *BMI*, *PregnancyRatio*,
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/UznetDev/Diabetes-Prediction.git
-   cd Diabetes-Prediction
+   git clone https://github.com/Syed-Ammar-21/DiabAI.git
+   cd DiabAI
    ```
 
 2. Install required dependencies:
@@ -149,67 +120,16 @@ Selects specific columns *Pregnancies*, *Glucose*, *BMI*, *PregnancyRatio*,
 
 3. Run the application locally:
    ```bash
-   streamlit run main.py
-   ```
+   python -m venv venv (on windows terminal )
+   .\venv\Scripts\activate
+python -m streamlit run main.py
+  
 
 ---
 
-## How It Works
+## Project Structure
 
-### Application Workflow
-1. **User Input**:
-   - Enter health data in the sidebar.
-   - Features: Pregnancies, Glucose, Insulin, BMI, Age.
-2. **Prediction**:
-   - The trained model predicts diabetes risk and displays the result.
-3. **Explanation**:
-   - View SHAP plots (Waterfall and Force) for detailed feature contributions.
-   - Explore permutation importance for global feature analysis.
-4. **Model Performance**:
-   - Metrics such as Accuracy, F1 Score, and ROC AUC are displayed.
-
-
-# Project Structure
-```
-Diabetes-Prediction/
-├── README.md                 # Project documentation
-├── main.py                   # Entry point for the Streamlit app
-├── loader.py                 # Data loading and preprocessing
-├── training.py               # Script for training the model
-├── requirements.txt          # Project dependencies
-├── LICENSE                   # License file
-├── datasets/
-│   ├── diabetes.csv          # Dataset used for training and predictions
-├── models/
-│   ├── model.pkl             # Trained machine learning model
-├── images/
-│   ├── page_icon.jpeg        # Application page icon
-├── data/
-│   ├── config.py             # Configuration variables
-│   ├── base.py               # Static HTML/CSS content
-├── functions/
-│   ├── model.py              # Custom model implementation
-│   ├── function.py           # Utility functions
-└── app/                      # Application logic and components
-    ├── predict.py            # Prediction logic
-    ├── explainer.py          # SHAP-based explanations
-    ├── perm_importance.py    # Permutation importance analysis
-    ├── performance.py        # Visualization of model performance metrics
-    ├── input.py              # User input handling for predictions
-    ├── about.py              # Informational section on diabetes
-```
-
-
----
-
-## Explanation Methods
-
-1. **SHAP Waterfall Plot**:
-   - Shows how each feature contributes positively or negatively to the prediction.
-2. **SHAP Force Plot**:
-   - Interactive visualization of feature contributions to individual predictions.
-3. **Permutation Importance**:
-   - Ranks features by their impact on the model's predictions.
+![Project Structure](./folder-structure.jpg)
 
 ---
 
@@ -235,28 +155,12 @@ This project was developed to:
 
 ---
 
-## Contributing
-
-Contributions are welcome! Follow these steps:
-1. Fork the repository.
-2. Create a new feature branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes and push:
-   ```bash
-   git commit -m "Feature description"
-   git push origin feature-name
-   ```
-4. Submit a pull request.
+##  Deployment
 
 ---
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
+## 📜 License
+Distributed under the MIT License. See `LICENSE` for more information.
 
 
-### <i>Thank you for your interest in the project!</i>
-#python -m streamlit run main.py
+
