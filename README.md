@@ -9,10 +9,6 @@ This project demonstrates a machine learning solution for predicting diabetes ba
 
 ---
 
-### 🚀 Quick Links
-* **🌐 Live Application:** [View Live on Railway](https://web-production-efc90.up.railway.app/)
-
-
 > **⚠️ Disclaimer:** This project is for educational purposes only and is not a medical diagnostic tool.
 
 ![Home](Home.png)
@@ -161,6 +157,8 @@ This project was developed to:
 ---
 
 ##  Deployment
+
+* **🌐 Live Application:** [View Live on Railway](https://web-production-efc90.up.railway.app/)
 
 ---
 
