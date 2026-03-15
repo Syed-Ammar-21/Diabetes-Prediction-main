@@ -110,8 +110,8 @@ You can learn more about the model in detail from [here](notebooks/Model.ipynb).
 ### Steps
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Syed-Ammar-21/DiabAI.git
-   cd DiabAI
+   git clone https://github.com/Syed-Ammar-21/Diabetes-Prediction-main.git
+   cd Diabetes-Prediction-main
    ```
 
 2. Install required dependencies:
